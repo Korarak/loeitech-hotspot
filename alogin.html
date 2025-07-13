@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Internet hotspot - Redirect</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <style>
+        /* สไตล์หน้า Welcome */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .welcome-box {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .welcome-box h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #007bff;
+        }
+        .welcome-box p {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+    <script>
+        // Redirect หลังจากแสดงผล 2 วินาที
+        setTimeout(function() {
+            window.location.href = unescape('$(link-redirect-esc)');
+        }, 100);
+    </script>
+</head>
+
+<body>
+    <div class="welcome-box">
+        <h2>🎉 เข้าสู่ระบบสำเร็จ! 🎉</h2>
+        <p>กำลังนำทางไปยังหน้าหลัก...</p>
+    </div>
+</body>
+
+</html>

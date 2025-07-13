@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="icon" href="img/LTC.png" type="image/x-icon"> <!-- Favicon link -->
+   <title>เข้าสู่ระบบ</title>
+</head>
+<body>
+    <div id="intro" class="intro-screen">
+        <div class="intro-background"></div>
+        <img src="img/loeitech logo.png" alt="LoeiTech Logo" class="intro-logo" />
+    </div>
+    <div class="login-container">
+        <div class="login-left">
+            <img src="img/LTC.png" alt="Logo" class="logo">
+            <h2><center>Users Authentication<br>ยืนยันตัวตนผู้ใช้บริการอินเตอร์เน็ต</center></h2>
+            <!-- <h3><center>ชื่อผู้ใช้งาน/รหัสผ่าน ทดสอบระบบ Authentication 
+                <font color="red"> <br>ชื่อผู้ใช้งาน คือ guest
+                <br>รหัสผ่าน คือ 1234 <br></font>
+            </center></h3> -->
+            $(if chap-id)
+            <!-- Hidden form for additional login handling if necessary -->
+            <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+                <input type="hidden" name="username" />
+                <input type="hidden" name="password" />
+                <input type="hidden" name="dst" value="" />
+                <input type="hidden" name="popup" value="false" />
+            </form>
+
+            <script src="./md5.js"></script>
+            <script>
+                // JavaScript function to handle login
+                function handleLogin(event) {
+                    //event.preventDefault(); // Prevent default form submission
+                    // Set values for the hidden form
+                    document.sendin.username.value = document.login.username.value;
+                    document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+                    document.sendin.submit();
+                    // Open a new window
+                    
+                }
+                // Add event listener to the login form
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelector(".login-form").addEventListener("submit", handleLogin);
+                });
+            </script>
+             $(endif)
+            $(if error)
+            <h1 class="alert2 alert2-warning">ไม่สำเร็จ ตรวจสอบ username/password</h1>
+            $(endif)
+            <form class="login-form" name="login" autocomplete="on">
+              <label class="input-container">
+                  <img class="icon" src="img/user.png" alt="#" />
+                  <input name="username" type="text" value="$(username)" placeholder="ชื่อผู้ใช้งาน" autocomplete="username" />
+              </label>
+              <label class="input-container">
+                  <img class="icon" src="img/key.png" alt="#" />
+                  <input name="password" type="password" placeholder="รหัสผ่าน" autocomplete="current-password" />
+              </label>
+              <div class="submit-container">
+                  <input type="submit" value="เข้าสู่ระบบ" />
+                  <br>
+                  
+              </div>
+              
+          </form> 
+          <h3 class="alert alert-primary"><center> บุคลากรวิทยาลัยเทคนิคเลย <a href="http://192.168.10.114:8001/api/register.php" class="btn btn-primary"> สมัคร</a></center> </h3>
+          <h4>Powered by Proxmox MikroTik CHR</h4>
+        </div>
+        <div class="login-right">
+            <h3><h1 class="alert alert-primary">
+                <center> 
+                    <p style="font-size: 20px;">ประกาศ !</p>
+                    <p style="font-size: 16px;">สำหรับบุคลากรวิทยาลัยเทคนิคเลย สามารถ สร้าง/ตรวจสอบ ชื่อผู้ใช้/รหัสผ่าน ได้ด้วยตนเอง <a href="http://192.168.10.114:8001/api/register.php" class="btn btn-primary">สมัคร</a></p>
+                </center> 
+            </h1></h3>
+          <h3><h1 class="alert alert-warning">
+            <center> 
+                <p style="font-size: 20px;">ประกาศ !</p>
+                <p style="font-size: 18px;">
+                    นักเรียน นักศึกษา ใหม่ รหัสขึ้นต้น 67 สามารถใช้งานได้<br>
+                    ชื่อผู้ใช้ เป็น รหัสนักศึกษา 11 หลัก 67..........<br>
+                    รหัสผ่าน เป็น รหัสประชาชน 13 หลัก<br>
+                    ประวัติการใช้งานท่านได้ถูกจัดเก็บตาม พ.ร.บ ว่าด้วยการกระทำผิดเกี่ยวกับคอมพิวเตอร์ พ.ศ.2560
+                </p>
+            </center></h1>
+<hr>
+            <center>
+
+            </center>
+            </h3>
+        </div>
+    </div>
+    <footer class="footer">
+        <div>งานศูนย์ข้อมูลสารสนเทศ วิทยาลัยเทคนิคเลย Loei Technical College</div>
+    </footer>
+</body>
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const intro = document.getElementById("intro");
+        const loginContainer = document.querySelector(".login-container");
+        setTimeout(() => {
+            intro.classList.add("fade-out");
+            setTimeout(() => {
+                intro.style.display = "none";
+                loginContainer.classList.add("show-login");
+            }, 1000); // ซ่อน intro หลัง fade
+        }, 1000); // ระยะเวลาอินโทร 2.5 วินาที
+    });
+</script>
+</html>

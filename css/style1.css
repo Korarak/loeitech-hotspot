@@ -1,0 +1,535 @@
+@font-face {
+
+    font-family: 'CHULALONGKORNBold';
+    src: url('../font/CHULALONGKORNBold.otf') format('truetype');
+}
+
+body {
+    /* background-image: url('../img/praprisanu.jpg'); */ /* ย้อนขึ้นไปหนึ่งระดับ */
+    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat; /* ไม่ให้รูปภาพซ้ำ */
+    background-position: center center; /* จัดตำแหน่งรูปภาพให้อยู่ตรงกลาง */
+    font-family: 'CHULALONGKORNBold';
+  
+
+}
+
+/* ตั้งค่าสำหรับโครงร่างของเลย์เอาต์ */
+.login-container {
+    display: flex;
+    height: 100vh;
+    padding:10px;
+    color: white;
+    /* สีเขียว */
+    /* border-radius: 15px 50px 30px 5px;  */
+}
+
+.login-left, .login-right {
+    /* border-radius: 5px 5px 5px 5px;  */
+    margin-top: 0%;
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* จัดการกับพื้นหลังของแต่ละฝั่ง */
+.login-left {
+    /* background-color: rgba(240, 240, 240, 0.1); */ /* สีพื้นหลังพร้อมความโปร่งใส */
+    background-color: #1F7D53; /* สีพื้นหลังพร้อมความโปร่งใส */
+    backdrop-filter: blur(10px); /* ปรับค่าเบลอ (ยิ่งมากยิ่งเบลอ) */
+    -webkit-backdrop-filter: blur(10px); /* สำหรับเบราว์เซอร์ที่รองรับ -webkit */
+}
+
+
+/* ตั้งค่าองค์ประกอบฟอร์มในฝั่งซ้าย */
+.login-left h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.login-left p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #000000;
+}
+
+/* สไตล์ช่องกรอกข้อมูล */
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="submit"] {
+    width: 50%;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #f7f7f7;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* เอฟเฟกต์เมื่อโฟกัส */
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: rgb(38, 187, 45);
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(38, 187, 45, 0.6);
+    outline: none;
+}
+
+/* สไตล์ปุ่ม Submit */
+.login-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: rgb(48, 114, 52);
+}
+
+/* 💖 แก้ปัญหา Checkbox ยืดออก */
+.login-form input[type="checkbox"] {
+    width: 16px;  /* ล็อกขนาด Checkbox */
+    height: 16px;
+    margin: 0; /* ป้องกันขยับ */
+    cursor: pointer;
+}
+
+/* ตั้งค่าฝั่งขวา */
+.login-right {
+    /* border-radius: 5px 5px 5px 5px;  */
+    /* background-color: rgba(76, 167, 97, 0.5); */ /* สีพื้นหลังพร้อมความโปร่งใส */
+    background-color: rgba(240, 240, 240); /* สีพื้นหลังพร้อมความโปร่งใส */
+    backdrop-filter: blur(10px); /* ปรับค่าเบลอ (ยิ่งมากยิ่งเบลอ) */
+    -webkit-backdrop-filter: blur(10px); /* สำหรับเบราว์เซอร์ที่รองรับ -webkit */
+}
+
+.login-right * {
+    position: relative;
+    z-index: 2; /* เพื่อให้ข้อความและองค์ประกอบอยู่ด้านหน้า overlay */
+}
+.login-right h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-right p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* ตั้งค่าสำหรับไอคอนโซเชียลมีเดีย */
+.social-media a img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}
+
+/* ตั้งค่ารูปภาพโลโก้ */
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.icon {
+    width: 30px;
+}
+
+/* เพิ่มกำหนดให้ปรับการแสดงผลเฉพาะบนโทรศัพท์ */
+@media (max-width: 789px) {
+    .login-right {
+        width: 100%; /* เปลี่ยนให้กว้างเต็มหน้าจอในมือถือ */
+        padding: 10px; /* ลด padding เล็กน้อย */
+        background-color: rgba(240, 240, 240); /* สีพื้นหลังในมือถือ */
+        backdrop-filter: none; /* ปิดฟิลเตอร์เบลอ */
+    }
+
+    .login-right h2 {
+        font-size: 20px; /* ลดขนาดฟอนต์ */
+    }
+
+    .login-right p {
+        font-size: 16px; /* ลดขนาดฟอนต์ */
+    }
+
+    /* กำหนดให้รูปโลโก้หรือไอคอนจัดเรียงใหม่ */
+    .logo {
+        width: 80px; /* ขนาดของโลโก้เล็กลง */
+    }
+
+    .social-media a img {
+        width: 25px; /* ลดขนาดไอคอน */
+        height: 25px;
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1F7D53; /* สีเขียว */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    overflow: hidden; /* ซ่อนส่วนที่เกิน */
+    z-index: 9999; /* High z-index to bring to the topmost layer */
+}
+
+
+.scroll-text {
+    display: inline-block;
+    white-space: nowrap; /* ป้องกันการตัดบรรทัด */
+    animation: scroll-left 10s linear infinite; /* สร้างแอนิเมชันเลื่อน */
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(-100%); /* เริ่มจากด้านขวา */
+    }
+    100% {
+        transform: translateX(100%); /* เลื่อนไปด้านซ้ายจนสุด */
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column; /* เปลี่ยนให้เลย์เอาต์เป็นคอลัมน์บนมือถือ */
+        height: auto; /* ให้ความสูงไม่ถูกจำกัด */
+        width: auto;
+    }
+
+    .login-left, .login-right {
+        width: auto; /* เปลี่ยนให้เต็มหน้าจอ */
+       
+    }
+
+    .login-left {
+        background-color: #1F7D53; /* เพิ่มความเข้มของพื้นหลังเล็กน้อย */
+    }
+
+    .login-right {
+        background-color: rgba(240, 240, 240); /* สีพื้นหลังในมือถือ */
+        backdrop-filter: none; /* ปิดการเบลอ */
+    }
+
+    .login-left h2, .login-right h2 {
+        font-size: 20px; /* ปรับขนาดฟอนต์ให้เล็กลง */
+    }
+
+    .login-left p, .login-right p {
+        font-size: 16px; /* ลดขนาดฟอนต์ */
+    }
+
+    .login-form input {
+        width: 80%; /* ปรับความกว้างให้เหมาะสม */
+    }
+
+    .logo {
+        width: 80px; /* ขนาดของโลโก้เล็กลง */
+    }
+
+    .social-media a img {
+        width: 25px; /* ไอคอนเล็กลง */
+        height: 25px;
+    }
+
+    .footer {
+        font-size: 14px; /* ปรับขนาดฟอนต์ฟุตเตอร์ */
+        padding: 5px 0; /* ปรับ padding ฟุตเตอร์ให้เล็กลง */
+    }
+}
+
+/* ให้ตัวแทนของ div logout และ main อยู่กลางหน้าจอ */
+.logout, .main {
+    display: flex;
+    justify-content: center;  /* จัดให้เนื้อหาอยู่กลางในแนวนอน */
+    align-items: center;      /* จัดให้เนื้อหาอยู่กลางในแนวตั้ง */
+    height: 100vh;            /* ใช้ความสูงของหน้าจอเต็มที่ */
+    margin: 0;
+}
+
+/* กำหนดสไตล์ให้กับกล่องที่บรรจุเนื้อหา */
+.wrap {
+    background-color: rgba(255, 255, 255, 0.8); /* พื้นหลังสีขาวโปร่งแสง */
+    padding: 20px;
+    border-radius: 8px;  /* มุมโค้งนุ่มนวล */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้กับกล่อง */
+    width: 100%;
+    max-width: 500px; /* จำกัดความกว้างสูงสุด */
+    text-align: center; /* จัดข้อความให้ตรงกลาง */
+}
+
+/* สไตล์สำหรับตาราง */
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+/* สไตล์สำหรับเซลล์ในตาราง */
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: white;
+}
+
+/* สไตล์สำหรับปุ่ม submit */
+input[type="submit"] {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+/* Base button styling */
+.btn {
+    display: inline-block;
+    padding: 5px 30px; /* Adjust padding for size */
+    font-size: 24px; /* Font size for readability */
+    font-weight: bold;
+    /* text-align: center; */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    cursor: pointer;
+}
+
+/* Primary button styling */
+.btn-primary {
+    background-color: #007bff; /* Primary color */
+    color: white; /* Text color */
+    border: 1px solid #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker color on hover */
+    border-color: #0056b3;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* เปลี่ยนสีเมื่อ hover */
+}
+/* Align icon and input */
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Style the icon */
+.icon {
+    width: 24px; /* Adjust size as needed */
+    margin-right: 8px;
+    margin-bottom: 16px;
+}
+
+/* Input field styling */
+.input-container input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Center the submit button */
+.submit-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/* Make the form responsive */
+@media (max-width: 600px) {
+
+    .input-container input,
+    .submit-container input[type="submit"] {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Base alert styling */
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 80%;
+}
+
+/* Warning alert (similar to Bootstrap's alert-warning) */
+.alert-warning {
+    color: #856404; /* Text color */
+    background-color: #fff3cd; /* Background color */
+    border-color: #ffeeba; /* Border color */
+}
+.alert-primary {
+    color: #856404; /* Text color */
+    background-color: #ffffff; /* Background color */
+    border-color: #ffffff; /* Border color */
+}
+
+.alert2 {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Warning alert (similar to Bootstrap's alert-warning) */
+.alert2-warning {
+    color: #ffffff; /* Text color */
+    background-color: #db6565; /* Background color */
+    border-color: #db6565; /* Border color */
+}
+
+/* Optional: Add close button styling */
+.alert .close {
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    color: #856404;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+a {
+    text-decoration: none;
+  }
+a img {
+    width: 42px;
+    height: 42px;
+    transition: transform 0.3s ease; /* เพิ่มการเคลื่อนไหว */
+  }
+
+  /* ขยายขนาดภาพเมื่อเอาเมาส์ไปชี้ */
+a:hover img {
+    transform: scale(1.5); /* ขยายภาพ 1.5 เท่า */
+  }
+.remember-container {
+    display: flex;
+    padding: 0px 0px 0px 30px;
+    align-items: flex-start; /* ทำให้ Checkbox กับข้อความอยู่ในแนวเดียวกัน */
+    gap: 5px; /* ปรับระยะห่างระหว่าง Checkbox กับข้อความ */
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.remember-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 15px rgba(0, 86, 179, 0.4);
+  }
+  
+  .btn-primary:active {
+    background-color: #004494;
+    box-shadow: 0 2px 5px rgba(0, 68, 148, 0.4);
+  }
+  
+  .btn-primary:disabled {
+    background-color: #a0c4ff;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  .intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    animation: introFade 0.3s ease-in-out forwards;
+}
+
+/* .intro-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/praprisanu.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: contrast(1.2) brightness(1.1) sepia(0.5) hue-rotate(90deg) saturate(2);
+    z-index: 1;
+} */
+
+.intro-logo {
+    width: 180px;
+    z-index: 2;
+    animation: logoZoom 0.3s ease-in-out forwards;
+}
+
+@keyframes logoZoom {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.15s ease-in forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.login-container {
+    opacity: 0;
+    transform: scale(0.95); /* เริ่มจากใกล้เคียงขนาดจริงมากขึ้น */
+    transition: all 0.15s ease-out; /* ทำให้การเปลี่ยนเร็วและลื่นขึ้น */
+}
+
+.show-login {
+    opacity: 1;
+    transform: scale(1);
+}
