@@ -6,7 +6,13 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="-1">
 <title>Internet hotspot - Advertisement</title>
-<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+    body {
+        font-family: 'Krub', sans-serif;
+    }
+</style>
 <script>
 
     var popup = '';
@@ -27,12 +33,12 @@
     }
 </script>
 </head>
-<body onLoad="openAdvert()">
-    <div class="ie-fixMinHeight">
-        <div class="main">
-            <div class="wrap">
-                <h1>Advertisement</h1>
-                <p class="info">If nothing happens, open <a href="$(link-redirect)" target="hotspot_advert">advertisement</a> manually.</p>
+<body class="bg-gray-100 min-h-screen" onLoad="openAdvert()">
+    <div class="flex min-h-screen">
+        <div class="flex flex-col justify-center items-center w-full">
+            <div class="max-w-md mx-auto p-8 bg-white rounded-[25px] shadow-lg">
+                <h1 class="text-2xl font-bold text-center mb-4">Advertisement</h1>
+                <p class="text-gray-700 text-center">If nothing happens, open <a href="$(link-redirect)" target="hotspot_advert" class="text-blue-600 hover:text-blue-800 underline">advertisement</a> manually.</p>
             </div>
         </div>
     </div>
