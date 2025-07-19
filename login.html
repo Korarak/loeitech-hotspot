@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="style.css"></script>
+    <link rel="icon" href="img/LTC.png" type="image/x-icon">
+    <title>เข้าสู่ระบบ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+        body {
+            font-family: 'Krub', sans-serif;
+        }
+
+        @keyframes logoZoom {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .intro-logo {
+            animation: logoZoom 2s ease-out;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .fade-out {
+            animation: fadeOut 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div id="intro" class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('img/praprisanu.jpg'); filter: blur(0.3px);"></div>
+        <div class="absolute inset-0 bg-green-800 opacity-80"></div>
+        <img src="img/loeitechlogo.png" alt="LoeiTech Logo" class="intro-logo w-40 h-40 object-contain relative z-10" />
+    </div>
+    
+    <div class="login-container min-h-screen flex flex-col md:flex-row relative">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('img/praprisanu.jpg'); filter: blur(3px);"></div>
+        <div class="absolute inset-0 bg-green-700 opacity-80"></div>
+        <div class="login-left md:w-1/2 text-white p-10 flex flex-col justify-center items-center relative z-10">
+            <img src="img/LTC.png" alt="Logo" class="w-32 h-32 mb-8">
+            <h2 class="text-2xl font-bold text-center mb-6">Users Authentication<br>ยืนยันตัวตนผู้ใช้บริการอินเตอร์เน็ต</h2>
+            
+            $(if chap-id)
+            <form name="sendin" action="$(link-login-only)" method="post" class="hidden">
+                <input type="hidden" name="username" />
+                <input type="hidden" name="password" />
+                <input type="hidden" name="dst" value="" />
+                <input type="hidden" name="popup" value="false" />
+            </form>
+
+            <script src="./md5.js"></script>
+            <script>
+                function handleLogin(event) {
+                    document.sendin.username.value = document.login.username.value;
+                    document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+                    document.sendin.submit();
+                }
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelector(".login-form").addEventListener("submit", handleLogin);
+                    
+                    // Show/Hide Password functionality
+                    const togglePassword = document.getElementById('togglePassword');
+                    const password = document.getElementById('password');
+                    const eyeIcon = document.getElementById('eyeIcon');
+                    const eyeSlashIcon = document.getElementById('eyeSlashIcon');
+                    
+                    togglePassword.addEventListener('click', function() {
+                        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                        password.setAttribute('type', type);
+                        
+                        // Toggle icon visibility
+                        if (type === 'text') {
+                            eyeIcon.classList.add('hidden');
+                            eyeSlashIcon.classList.remove('hidden');
+                        } else {
+                            eyeIcon.classList.remove('hidden');
+                            eyeSlashIcon.classList.add('hidden');
+                        }
+                    });
+                });
+            </script>
+            $(endif)
+            
+            $(if error)
+            <h1 class="text-red-500 text-center mb-4 p-3 bg-red-100 rounded-[25px]">ไม่สำเร็จ ตรวจสอบ username/password</h1>
+            $(endif)
+            
+            <form class="login-form w-full max-w-md" name="login" autocomplete="on">
+                <div class="relative mb-4">
+                    <img class="absolute left-3 top-1/2 transform -translate-y-1/2 w-6 h-6" src="img/user.png" alt="#" />
+                    <input name="username" type="text" value="$(username)" placeholder="ชื่อผู้ใช้งาน" autocomplete="username" 
+                           class="w-full pl-12 pr-4 py-3 border-2 border-transparent rounded-[25px] bg-gray-100 text-gray-800 focus:border-green-500 focus:bg-white focus:outline-none transition-all duration-300" />
+                </div>
+                <div class="relative mb-4">
+                    <img class="absolute left-3 top-1/2 transform -translate-y-1/2 w-6 h-6" src="img/key.png" alt="#" />
+                    <input name="password" id="password" type="password" placeholder="รหัสผ่าน" autocomplete="current-password" 
+                           class="w-full pl-12 pr-12 py-3 border-2 border-transparent rounded-[25px] bg-gray-100 text-gray-800 focus:border-green-500 focus:bg-white focus:outline-none transition-all duration-300" />
+                    <button type="button" id="togglePassword" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                        <svg id="eyeIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                        <svg id="eyeSlashIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="mb-4">
+                    <input type="submit" value="เข้าสู่ระบบ" 
+                           class="w-full py-3 bg-green-600 text-white rounded-[25px] hover:bg-green-700 transition-colors duration-300 cursor-pointer" />
+                </div>
+            </form>
+            
+            <h3 class="text-center text-sm mt-4">
+                บุคลากรวิทยาลัยเทคนิคเลย 
+                <a href="http://192.168.10.114:8001/api/register.php" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-[25px] hover:bg-blue-700 transition-colors duration-300">สมัคร</a>
+            </h3>
+            <h4 class="text-center text-xs mt-2 text-gray-300">Powered by Proxmox MikroTik CHR</h4>
+        </div>
+        
+        <div class="login-right md:w-1/2 p-20 flex flex-col justify-center items-center relative z-10" style="background-color: rgba(255, 255, 255, 0.6);">
+            <div class="max-w-2xl">
+                <h3 class="mb-6">
+                    <h1 class="text-center p-4 bg-blue-100 shadow-xl rounded-[25px]">
+                        <p class="text-xl font-bold mb-2">ประกาศ !</p>
+                        <p class="text-base">สำหรับบุคลากรวิทยาลัยเทคนิคเลย สามารถ สร้าง/ตรวจสอบ ชื่อผู้ใช้/รหัสผ่าน ได้ด้วยตนเอง </p>
+                        <a href="http://192.168.10.114:8001/api/register.php" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-[25px] hover:bg-blue-700 transition-colors duration-300">สมัคร</a>
+                    </h1>
+                </h3>
+                
+                <h3 class="mb-6">
+                    <h1 class="text-center p-4 bg-yellow-100 shadow-xl rounded-[25px]">
+                        <p class="text-xl font-bold mb-2">ประกาศ !</p>
+                        <p class="text-base">
+                            นักเรียน นักศึกษา ใหม่ รหัสขึ้นต้น 67 สามารถใช้งานได้<br>
+                            ชื่อผู้ใช้ เป็น รหัสนักศึกษา 11 หลัก 67..........<br>
+                            รหัสผ่าน เป็น รหัสประชาชน 13 หลัก<br>
+                            ประวัติการใช้งานท่านได้ถูกจัดเก็บตาม พ.ร.บ ว่าด้วยการกระทำผิดเกี่ยวกับคอมพิวเตอร์ พ.ศ.2560
+                        </p>
+                    </h1>
+                </h3>
+                <hr class="my-6">
+            </div>
+        </div>
+    </div>
+    
+    <footer class="fixed bottom-0 left-0 w-full bg-green-700 text-white text-center py-3 z-50">
+        <div class="scroll-text">งานศูนย์ข้อมูลสารสนเทศ วิทยาลัยเทคนิคเลย Loei Technical College</div>
+    </footer>
+</body>
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const intro = document.getElementById("intro");
+        const loginContainer = document.querySelector(".login-container");
+        setTimeout(() => {
+            intro.classList.add("fade-out");
+            setTimeout(() => {
+                intro.style.display = "none";
+                loginContainer.classList.add("opacity-100");
+            }, 1000);
+        }, 1000);
+    });
+</script>
+</html>

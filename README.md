@@ -1,0 +1,11 @@
+การทำงานของไฟล์จะเรื่มที่
+login.html
+v
+v
+alogin.html
+v
+v
+status.html
+v
+v
+logout.html

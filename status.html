@@ -1,0 +1,121 @@
+<html>
+<head>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<title>สถานะการเข้าสู่ระบบ</title>
+<script src="style.css"></script>
+<link rel="icon" href="img/LTC.png" type="image/x-icon">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+    body {
+        font-family: 'Krub', sans-serif;
+    }
+</style>
+<script>
+
+// ... existing code ...
+
+function openLogout() {
+    if (window.name != 'hotspot_status') return true;
+    window.open(
+        '$(link-logout)', 
+        'hotspot_logout', 
+        'width=280,height=250,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes'
+    );
+    return false;
+}
+
+function replaceWindow() {
+    window.open(
+        '/status',
+        'new_window', 
+        'width=400,height=500,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes'
+    );
+}
+
+</script>
+</head>
+<style>
+    body {
+        font-family: 'Krub', sans-serif;
+        background-image: url('img/praprisanu.jpg'); /* เปลี่ยนเป็น path ของภาพที่คุณใช้ */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<body class="bg-white" $(if advert-pending == 'yes') onLoad="openAdvert(); " $(endif)>
+    
+<div class="min-h-screen flex flex-col md:flex-row opacity-90">
+    <div class="md:w-1/2 bg-green-700 text-white p-10 flex flex-col justify-center items-center">
+        <h1 class="text-2xl font-bold text-center mb-6 p-4 bg-yellow-100 text-yellow-800 rounded-[25px]">!!หน้าต่างสำหรับ Logout ไม่ต้องปิด</h1>
+        $(if login-by == 'trial')
+            <h1 class="text-xl font-bold mb-4">สวัสดีคุณ, trial user!</h1>
+        $(elif login-by != 'mac')
+            <h1 class="text-xl font-bold mb-4">สวัสดีคุณ, $(username)!</h1>
+        $(endif)
+        
+        <div class="w-full max-w-md">
+            <table class="w-full mb-6 text-white">
+                <tr class="border-b border-gray-300"><td class="py-2 font-bold">IP address</td><td class="py-2">$(ip)</td></tr>
+                <tr class="border-b border-gray-300"><td class="py-2 font-bold">Bytes up / down</td><td class="py-2">$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+                $(if session-time-left)
+                    <tr class="border-b border-gray-300"><td class="py-2 font-bold">Connected / left</td><td class="py-2">$(uptime) / $(session-time-left)</td></tr>
+                    <tr class="border-b border-gray-300"><td class="py-2 font-bold">MAC address</td><td class="py-2">$(mac)</td></tr>
+                $(else)
+                    <tr class="border-b border-gray-300"><td class="py-2 font-bold">Connected</td><td class="py-2">$(uptime)</td></tr>
+                    <tr class="border-b border-gray-300"><td class="py-2 font-bold">MAC address</td><td class="py-2">$(mac)</td></tr>
+                $(endif)
+                $(if blocked == 'yes')
+                    <tr class="border-b border-gray-300"><td class="py-2 font-bold">Status</td><td class="py-2">
+                        <a href="$(link-advert)" target="hotspot_advert" class="text-blue-300 hover:text-blue-100 underline">Advertisement required</a></td>
+                    </tr>
+                $(elif refresh-timeout)
+                    <tr class="border-b border-gray-300"><td class="py-2 font-bold">Status refresh</td><td class="py-2">$(refresh-timeout)</td></tr>
+                $(endif)
+            </table>
+            
+            $(if login-by-mac != 'yes')
+            <form action="$(link-logout)" name="logout" onSubmit="return openLogout()" class="w-full">
+                <input type="submit" value="ออกจากระบบ" class="w-full py-3 bg-green-600 text-white rounded-[25px] hover:bg-green-700 transition-colors duration-300 cursor-pointer">
+            </form>
+            $(endif)
+        </div>
+    </div>
+    
+    <div class="md:w-1/2 bg-gray-100 p-10 flex flex-col justify-center items-center">
+        <div class="text-center">
+            <div class="flex justify-center space-x-4 mb-6">
+                <a href="https://www.facebook.com/www.loeitech.ac.th" target="_blank" class="hover:opacity-80 transition-opacity">
+                    <img class="w-14 h-14" src="img/facebook.png" alt="facebook">
+                </a>
+                <a href="https://www.loeitech.ac.th/" target="_blank" class="hover:opacity-80 transition-opacity">
+                    <img class="w-14 h-14" src="img/www.png" alt="website">
+                </a>
+                <a href="https://loeitech.appedr.com/edr/login.do" target="_blank" class="hover:opacity-80 transition-opacity">
+                    <img class="w-14 h-14" src="img/EDR.png" alt="edr">
+                </a>
+            </div>
+            <hr class="mb-6">
+            <div class="text-center">
+                วิทยาลัยเทคนิคเลย <br>
+                Loei Technical College <br>
+                Phone: 042-812-568 <br>
+                Email: loei@loeitech.ac.th <br><br>
+                <br><br>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="fixed bottom-0 left-0 w-full bg-green-700 text-white text-center py-3">
+    <div>งานศูนย์ข้อมูลสารสนเทศ วิทยาลัยเทคนิคเลย</div>
+</footer>
+</body>
+</html>

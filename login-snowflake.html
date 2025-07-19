@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/LTC.png" type="image/x-icon">
+    <title>เข้าสู่ระบบ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+        body {
+            font-family: 'Krub', sans-serif;
+        }
+        /* customizable snowflake styling */
+        .snowflake {
+          color: #fff;
+          font-size: 1em;
+          font-family: Arial, sans-serif;
+          text-shadow: 0 0 5px #000;
+        }
+        
+        .snowflake,.snowflake .inner{animation-iteration-count:infinite;animation-play-state:running}@keyframes snowflakes-fall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;user-select:none;cursor:default;animation-name:snowflakes-shake;animation-duration:3s;animation-timing-function:ease-in-out}.snowflake .inner{animation-duration:10s;animation-name:snowflakes-fall;animation-timing-function:linear}.snowflake:nth-of-type(0){left:1%;animation-delay:0s}.snowflake:nth-of-type(0) .inner{animation-delay:0s}.snowflake:first-of-type{left:10%;animation-delay:1s}.snowflake:first-of-type .inner,.snowflake:nth-of-type(8) .inner{animation-delay:1s}.snowflake:nth-of-type(2){left:20%;animation-delay:.5s}.snowflake:nth-of-type(2) .inner,.snowflake:nth-of-type(6) .inner{animation-delay:6s}.snowflake:nth-of-type(3){left:30%;animation-delay:2s}.snowflake:nth-of-type(11) .inner,.snowflake:nth-of-type(3) .inner{animation-delay:4s}.snowflake:nth-of-type(4){left:40%;animation-delay:2s}.snowflake:nth-of-type(10) .inner,.snowflake:nth-of-type(4) .inner{animation-delay:2s}.snowflake:nth-of-type(5){left:50%;animation-delay:3s}.snowflake:nth-of-type(5) .inner{animation-delay:8s}.snowflake:nth-of-type(6){left:60%;animation-delay:2s}.snowflake:nth-of-type(7){left:70%;animation-delay:1s}.snowflake:nth-of-type(7) .inner{animation-delay:2.5s}.snowflake:nth-of-type(8){left:80%;animation-delay:0s}.snowflake:nth-of-type(9){left:90%;animation-delay:1.5s}.snowflake:nth-of-type(9) .inner{animation-delay:3s}.snowflake:nth-of-type(10){left:25%;animation-delay:0s}.snowflake:nth-of-type(11){left:65%;animation-delay:2.5s}
+    </style>
+    <div class="snowflakes" aria-hidden="true">
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+    </div>
+    
+<body class="bg-white">
+    <div class="min-h-screen flex flex-col md:flex-row">
+        <div class="md:w-1/2 bg-green-700 text-white p-10 flex flex-col justify-center items-center">
+            <img src="img/LTC.png" alt="Logo" class="w-32 h-32 mb-8">
+            <h2 class="text-2xl font-bold text-center mb-6">Users Authentication<br>ยืนยันตัวตนผู้ใช้บริการอินเตอร์เน็ต</h2>
+            
+            $(if chap-id)
+            <form name="sendin" action="$(link-login-only)" method="post" class="hidden">
+                <input type="hidden" name="username" />
+                <input type="hidden" name="password" />
+                <input type="hidden" name="dst" value="" />
+                <input type="hidden" name="popup" value="true" />
+            </form>
+
+            <script src="/md5.js"></script>
+            <script>
+                function handleLogin(event) {
+                    document.sendin.username.value = document.login.username.value;
+                    document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+                    document.sendin.submit();
+                }
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelector(".login-form").addEventListener("submit", handleLogin);
+                });
+            </script>
+            $(endif)
+            
+            $(if error)
+            <h1 class="text-red-500 text-center mb-4 p-3 bg-red-100 rounded-[25px]">ไม่สำเร็จ ตรวจสอบ username/password</h1>
+            $(endif)
+            
+            <form class="login-form w-full max-w-md" name="login" autocomplete="on">
+                <div class="relative mb-4">
+                    <img class="absolute left-3 top-1/2 transform -translate-y-1/2 w-6 h-6" src="img/user.png" alt="#" />
+                    <input name="username" type="text" value="$(username)" placeholder="ชื่อผู้ใช้งาน" autocomplete="username" 
+                           class="w-full pl-12 pr-4 py-3 border-2 border-transparent rounded-[25px] bg-gray-100 text-gray-800 focus:border-green-500 focus:bg-white focus:outline-none transition-all duration-300" />
+                </div>
+                <div class="relative mb-4">
+                    <img class="absolute left-3 top-1/2 transform -translate-y-1/2 w-6 h-6" src="img/key.png" alt="#" />
+                    <input name="password" type="password" placeholder="รหัสผ่าน" autocomplete="current-password" 
+                           class="w-full pl-12 pr-4 py-3 border-2 border-transparent rounded-[25px] bg-gray-100 text-gray-800 focus:border-green-500 focus:bg-white focus:outline-none transition-all duration-300" />
+                </div>
+                <div class="mb-4">
+                    <input type="submit" value="เข้าสู่ระบบ" 
+                           class="w-full py-3 bg-green-600 text-white rounded-[25px] hover:bg-green-700 transition-colors duration-300 cursor-pointer" />
+                    <h3 class="text-center text-xs mt-2 text-gray-300">Powered by MikroTik CHR</h3>
+                </div>
+            </form>
+        </div>
+        
+        <div class="md:w-1/2 bg-gray-100 p-10 flex flex-col justify-center items-center">
+            <div class="max-w-md">
+                <h3 class="mb-6">
+                    <h1 class="text-center p-4 bg-yellow-100 rounded-[25px]">
+                        <p class="text-xl font-bold mb-2">ประกาศ !</p>
+                        <p class="text-base">
+                            นักเรียน นักศึกษา ใหม่ รหัสขึ้นต้น 67 สามารถใช้งานได้<br>
+                            ชื่อผู้ใช้ เป็น รหัสนักศึกษา 11 หลัก 67..........<br>
+                            รหัสผ่าน เป็น รหัสประชาชน 13 หลัก<br>
+                            ประวัติการใช้งานท่านได้ถูกจัดเก็บตาม พ.ร.บ ว่าด้วยการกระทำผิดเกี่ยวกับคอมพิวเตอร์ พ.ศ.2560
+                        </p>
+                    </h1>
+                </h3>
+                <hr class="my-6">
+                <div class="text-center">
+                    วิทยาลัยเทคนิคเลย <br>
+                    Loei Technical College <br>
+                    Phone: 042-812-568 <br>
+                    Email: loei@loeitech.ac.th <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="fixed bottom-0 left-0 w-full bg-green-700 text-white text-center py-3">
+        <div>งานศูนย์ข้อมูลสารสนเทศ วิทยาลัยเทคนิคเลย</div>
+    </footer>
+</body>
+</html>
