@@ -51,12 +51,13 @@
                 <input type="hidden" name="popup" value="false" />
             </form>
 
-            <script src="./md5.js"></script>
+            <script src="md5.js"></script>
             <script>
                 function handleLogin(event) {
-                    document.sendin.username.value = document.login.username.value;
-                    document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
-                    document.sendin.submit();
+                        event.preventDefault(); // ต้องปิดการส่งฟอร์มเดิม
+                        document.sendin.username.value = document.login.username.value;
+                        document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+                        document.sendin.submit();
                 }
                 document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector(".login-form").addEventListener("submit", handleLogin);
